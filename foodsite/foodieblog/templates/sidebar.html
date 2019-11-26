@@ -1,0 +1,31 @@
+{% block sidebar %}
+<style>
+    .card {
+        box-shadow: 0 16px 48px goldenrod;
+    }
+
+    body {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
+        background-color: greenyellow;
+    }
+</style>
+
+<!-- Sidebar Column -->
+<div class="col-md-4 float-right ">
+    <div class="card my-4">
+        <h5 class="card-header">About Us</h5>
+        <div class="card-body">
+            <p class="card-text"> 
+                {% load static %}
+                <img src="{% static "foodieblog/kitchen_chronicles_about.jpg" %}" alt="About Us" height="350" width="300">
+                <p><strong>Hey there!</strong> 
+                    <p>We are the Kitchen Chronicles.<br></p>
+                    And Foodie Blogs is our my little corner of the internet, where we let you read about different foods you can try out.
+                </p>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock sidebar %}
