@@ -17,20 +17,13 @@
 </style>
 
 <header class="masthead">
-    <div class="overlay"></div>
+    <div class="overlay">
         <div class="container">
             <div class="row">
                 <div class=" col-md-8 col-md-10 mx-auto">
                     <div class="site-heading"><h3 class=" site-heading my-4 mt-3 text-white"> Foodie Blogs </h3></div>
                 </div>
             </div>    
-        </div>
-        <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.blog_title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.blog_author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.blog_content|slice:":200" }}</p>
-                </div>
         </div>
     </div>
 </header>
@@ -44,7 +37,7 @@
                     <h2 class="card-title">{{ post.blog_title }}</h2>
                     <p class="card-text text-muted h6">{{ post.blog_author }} | {{ post.created_on}} </p>
                     <p class="card-text">{{post.blog_content|slice:":200" }}</p>
-                    
+                    <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More &rarr;</a> 
                 </div>
             </div>
             {% endfor %}

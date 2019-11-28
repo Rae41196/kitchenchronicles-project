@@ -1,10 +1,10 @@
 from django.urls import path
 
-from foodieblog import views
-from .views import PostList
+# from foodieblog import views
+from foodieblog.views import PostList, post_detail 
 
-app_name='foodieblog'
+# app_name='foodieblog'
 urlpatterns =[
-    path('', views.PostList.as_view(), name='index'),
-    # path('<slug:slug>/', views.DetailsView.as_view())
+    path('', PostList.as_view(), name='index'),
+    path('<slug:slug>/', post_detail, name='post_detail')
 ]

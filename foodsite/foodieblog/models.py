@@ -1,9 +1,11 @@
 import datetime
 
-from django.utils import timezone
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
+from django.utils import timezone
+
+
 
 
 class BlogCategory(models.Model):
@@ -32,10 +34,11 @@ class Post(BlogCategory):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     blog_content = models.TextField(help_text='Type Your Post Here')
-    status = models.CharField(max_length= 1, choices=STATUS)
+    status = models.CharField(max_length=1, choices=STATUS)
 
-    def get_absolute_url(self):
-        return reverse('posts_list',kwargs={'slug': self.slug})
+    # def get_absolute_url(self):
+    #     return reverse('index', kwargs={'slug': self.slug})
+        
 
     #to be tested to ensure post created will only posted recently not in future or past
     def was_posted_recently(self): 
@@ -63,9 +66,7 @@ class Comment(models.Model):
 
     def was_commented_recently(self): 
         now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.created_on <= now 
-    def get_absolute_url(self):
-        return reverse('post_detail',kwargs={'name': self.name})
+        return now - datetime.timedelta(days=1) <= self.created_on <= now
     class Meta:
         ordering = ['created_on']
 
